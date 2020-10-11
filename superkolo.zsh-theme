@@ -1,5 +1,7 @@
 autoload -Uz vcs_info
 
+local time='%B%F{blue}%T'
+
 zstyle ':vcs_info:*' stagedstr '%F{green}●'
 zstyle ':vcs_info:*' unstagedstr '%F{yellow}●'
 zstyle ':vcs_info:*' check-for-changes true
@@ -16,7 +18,7 @@ theme_precmd () {
 }
 
 setopt prompt_subst
-PROMPT='%B%F{blue}%T %(?..%F{red}%B%S $? %s%b%f )%B%F{magenta}%c%B%F{green}${vcs_info_msg_0_}%B%F{magenta} %{$reset_color%}%% '
+PROMPT='${time} %{$fg[yellow]%}%n@%{$fg[yellow]%}%m%{$reset_color%} %(?..%F{red}%B%S $? %s%b%f )%B%F{magenta}%c%B%F{green}${vcs_info_msg_0_}%B%F{magenta} %{$reset_color%}%% '
 
 autoload -U add-zsh-hook
 add-zsh-hook precmd  theme_precmd
